@@ -1,0 +1,41 @@
+{
+  "collectionName": "components_home_component_home_abouts",
+  "info": {
+    "displayName": "Home About",
+    "icon": "chartBubble"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "sub_title": {
+      "type": "text",
+      "required": true
+    },
+    "description": {
+      "type": "richtext",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "component": "utils.link",
+      "repeatable": false,
+      "required": true
+    },
+    "spec_items": {
+      "type": "component",
+      "component": "home-component.specifications",
+      "repeatable": true,
+      "required": true
+    },
+    "media": {
+      "type": "component",
+      "component": "utils.s-ingle-media-without-t-ype",
+      "repeatable": false,
+      "required": true
+    }
+  },
+  "config": {}
+}

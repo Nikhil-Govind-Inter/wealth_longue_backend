@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_home_component_home_banners",
+  "info": {
+    "displayName": "Home Banner",
+    "icon": "brush"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "media": {
+      "type": "component",
+      "component": "utils.media-with-type",
+      "repeatable": false,
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "component": "utils.link",
+      "repeatable": false,
+      "required": true
+    }
+  },
+  "config": {}
+}

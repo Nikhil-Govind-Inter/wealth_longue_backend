@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_global_headers",
+  "info": {
+    "displayName": "Header",
+    "icon": "bulletList"
+  },
+  "options": {},
+  "attributes": {
+    "base_url": {
+      "type": "string"
+    },
+    "media": {
+      "type": "component",
+      "component": "utils.s-ingle-media-without-t-ype",
+      "repeatable": false
+    },
+    "nav_links": {
+      "type": "component",
+      "component": "utils.link",
+      "repeatable": true
+    },
+    "login_button": {
+      "type": "component",
+      "component": "utils.link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,27 @@
+{
+  "collectionName": "components_layout_social_items",
+  "info": {
+    "displayName": "Social Items",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "media_path": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "label": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

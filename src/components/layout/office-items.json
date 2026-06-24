@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_layout_office_items",
+  "info": {
+    "displayName": "Office Items"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "is_external": {
+      "type": "boolean"
+    }
+  },
+  "config": {}
+}

@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_home_component_specifications",
+  "info": {
+    "displayName": "Specifications",
+    "icon": "arrowLeft"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "integer",
+      "required": true
+    },
+    "sufix": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

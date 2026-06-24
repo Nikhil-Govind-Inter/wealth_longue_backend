@@ -1,0 +1,40 @@
+{
+  "kind": "singleType",
+  "collectionName": "homes",
+  "info": {
+    "singularName": "home",
+    "pluralName": "homes",
+    "displayName": "Home"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "home_banner": {
+      "type": "component",
+      "component": "home-component.home-banner",
+      "repeatable": true
+    },
+    "about_section": {
+      "type": "component",
+      "component": "home-component.home-about",
+      "repeatable": false
+    },
+    "service_section": {
+      "type": "component",
+      "component": "home-component.home-service",
+      "repeatable": false
+    },
+    "testimonial_section": {
+      "type": "component",
+      "component": "home-component.home-testimonials",
+      "repeatable": false
+    },
+    "news_and_blogs": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::news-and-blog.news-and-blog"
+    }
+  }
+}

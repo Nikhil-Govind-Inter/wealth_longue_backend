@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_utils_s_ingle_media_without_t_ypes",
+  "info": {
+    "displayName": "SIngle Media Without tYPE",
+    "icon": "briefcase"
+  },
+  "options": {},
+  "attributes": {
+    "media_path": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "media_alt": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

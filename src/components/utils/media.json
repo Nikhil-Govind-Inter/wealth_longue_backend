@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_utils_media",
+  "info": {
+    "displayName": "Media Without Type",
+    "icon": "collapse"
+  },
+  "options": {},
+  "attributes": {
+    "desktop_media_path": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "mobile_media_path": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "media_alt": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

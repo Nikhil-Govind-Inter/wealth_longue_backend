@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "news_and_blogs",
+  "info": {
+    "singularName": "news-and-blog",
+    "pluralName": "news-and-blogs",
+    "displayName": "News And Blog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "published_on": {
+      "type": "date",
+      "required": true
+    },
+    "media": {
+      "type": "component",
+      "component": "utils.media",
+      "repeatable": false,
+      "required": true
+    },
+    "content": {
+      "type": "richtext",
+      "required": true
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title"
+    }
+  }
+}
