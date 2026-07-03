@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_layout_footer_navigations",
+  "info": {
+    "displayName": "Footer Navigations",
+    "icon": "cursor"
+  },
+  "options": {},
+  "attributes": {
+    "nav_title": {
+      "type": "string"
+    },
+    "navigation_links": {
+      "type": "component",
+      "component": "utils.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

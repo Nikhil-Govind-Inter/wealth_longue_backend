@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_about_component_mission_vissions",
+  "info": {
+    "displayName": "Mission Vission",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  },
+  "config": {}
+}

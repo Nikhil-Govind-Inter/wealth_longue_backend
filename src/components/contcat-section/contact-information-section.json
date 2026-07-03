@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_contcat_section_contact_information_section_s",
+  "info": {
+    "displayName": "Contact Information Section ",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "contact_items": {
+      "type": "component",
+      "component": "contcat-section.contact-items",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

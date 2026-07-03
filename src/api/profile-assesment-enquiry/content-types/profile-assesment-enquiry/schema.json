@@ -1,0 +1,63 @@
+{
+  "kind": "collectionType",
+  "collectionName": "profile_assesment_enquiries",
+  "info": {
+    "singularName": "profile-assesment-enquiry",
+    "pluralName": "profile-assesment-enquiries",
+    "displayName": "Profile Assesment Enquiry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "fullName": {
+      "type": "string"
+    },
+    "phone": {
+      "type": "string"
+    },
+    "email": {
+      "type": "email"
+    },
+    "age": {
+      "type": "integer"
+    },
+    "occupation": {
+      "type": "string"
+    },
+    "riskComfort": {
+      "type": "string"
+    },
+    "investedBefore": {
+      "type": "string"
+    },
+    "investmentExperience": {
+      "type": "string"
+    },
+    "investmentProducts": {
+      "type": "string"
+    },
+    "productInterest": {
+      "type": "string"
+    },
+    "readyToInvest": {
+      "type": "string"
+    },
+    "maximumPeriod": {
+      "type": "string"
+    },
+    "annualIncome": {
+      "type": "string"
+    },
+    "communication": {
+      "type": "string"
+    },
+    "mostConvenient": {
+      "type": "string"
+    },
+    "additionalDetails": {
+      "type": "string"
+    }
+  }
+}

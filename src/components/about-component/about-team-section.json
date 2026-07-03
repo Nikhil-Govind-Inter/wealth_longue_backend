@@ -1,0 +1,34 @@
+{
+  "collectionName": "components_about_component_about_team_sections",
+  "info": {
+    "displayName": "Teams",
+    "icon": "connector"
+  },
+  "options": {},
+  "attributes": {
+    "profile": {
+      "type": "component",
+      "component": "utils.s-ingle-media-without-t-ype",
+      "repeatable": false
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "designation": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    },
+    "linkedin_url": {
+      "type": "string"
+    },
+    "fb_url": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

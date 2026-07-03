@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_layout_social_medias",
+  "info": {
+    "displayName": "Social Media",
+    "icon": "twitter"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "items": {
+      "type": "component",
+      "component": "layout.social-items",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

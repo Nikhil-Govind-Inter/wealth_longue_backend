@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_global_widgets",
+  "info": {
+    "displayName": "widgets",
+    "icon": "dashboard"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "is_enabled": {
+      "type": "boolean",
+      "default": true
+    },
+    "is_external": {
+      "type": "boolean",
+      "default": true
+    },
+    "link": {
+      "type": "string"
+    },
+    "icon": {
+      "type": "component",
+      "component": "utils.s-ingle-media-without-t-ype",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

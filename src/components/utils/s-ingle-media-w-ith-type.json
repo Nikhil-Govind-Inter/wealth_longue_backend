@@ -1,0 +1,42 @@
+{
+  "collectionName": "components_utils_s_ingle_media_w_ith_types",
+  "info": {
+    "displayName": "SIngle Media WIth Type",
+    "icon": "book"
+  },
+  "options": {},
+  "attributes": {
+    "media_type": {
+      "type": "enumeration",
+      "required": true,
+      "default": "image",
+      "enum": [
+        "image",
+        "video"
+      ]
+    },
+    "media_path": {
+      "type": "media",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "media_type"
+            },
+            "image"
+          ]
+        }
+      },
+      "multiple": false,
+      "required": true,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "media_alt": {
+      "type": "string",
+      "required": true
+    }
+  },
+  "config": {}
+}

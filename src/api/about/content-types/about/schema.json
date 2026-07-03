@@ -1,0 +1,45 @@
+{
+  "kind": "singleType",
+  "collectionName": "abouts",
+  "info": {
+    "singularName": "about",
+    "pluralName": "abouts",
+    "displayName": "About"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "about_banner": {
+      "type": "component",
+      "component": "about-component.about-banner",
+      "repeatable": false
+    },
+    "about_section": {
+      "type": "component",
+      "component": "home-component.home-about",
+      "repeatable": false
+    },
+    "mission_vission_section": {
+      "type": "component",
+      "component": "about-component.mission-vission",
+      "repeatable": true
+    },
+    "about_core_section": {
+      "type": "component",
+      "component": "about-component.about-c-ore-section",
+      "repeatable": false
+    },
+    "team_section": {
+      "type": "component",
+      "component": "about-component.team-section",
+      "repeatable": false
+    },
+    "advisory_board_section": {
+      "type": "component",
+      "component": "about-component.team-section",
+      "repeatable": false
+    }
+  }
+}

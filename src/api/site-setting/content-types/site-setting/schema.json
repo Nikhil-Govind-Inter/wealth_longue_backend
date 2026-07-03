@@ -1,0 +1,30 @@
+{
+  "kind": "singleType",
+  "collectionName": "site_settings",
+  "info": {
+    "singularName": "site-setting",
+    "pluralName": "site-settings",
+    "displayName": "Site Setting"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Header": {
+      "type": "component",
+      "component": "global.header",
+      "repeatable": false
+    },
+    "Footer": {
+      "type": "component",
+      "component": "global.footer",
+      "repeatable": false
+    },
+    "widgets": {
+      "type": "component",
+      "component": "global.widgets",
+      "repeatable": true
+    }
+  }
+}

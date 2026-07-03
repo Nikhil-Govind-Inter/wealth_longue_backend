@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_approach_component_approaches_we_provides",
+  "info": {
+    "displayName": "Approaches We Provide",
+    "icon": "brush"
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "type": "component",
+      "component": "utils.s-ingle-media-without-t-ype",
+      "repeatable": false,
+      "required": true
+    },
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "blocks",
+      "required": true
+    }
+  },
+  "config": {}
+}

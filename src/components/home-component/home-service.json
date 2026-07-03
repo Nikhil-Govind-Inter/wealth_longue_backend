@@ -1,0 +1,30 @@
+{
+  "collectionName": "components_home_component_home_services",
+  "info": {
+    "displayName": "Home Service",
+    "icon": "command"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "component": "utils.link",
+      "repeatable": false
+    },
+    "service_items": {
+      "type": "component",
+      "component": "home-component.service-items",
+      "repeatable": true,
+      "required": true
+    }
+  },
+  "config": {}
+}

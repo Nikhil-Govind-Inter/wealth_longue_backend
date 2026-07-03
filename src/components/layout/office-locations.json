@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_layout_office_locations",
+  "info": {
+    "displayName": "Office Locations",
+    "icon": "cast"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "office_items": {
+      "type": "component",
+      "component": "layout.office-items",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}
