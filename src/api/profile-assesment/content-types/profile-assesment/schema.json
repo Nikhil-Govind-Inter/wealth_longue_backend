@@ -1,0 +1,28 @@
+{
+  "kind": "singleType",
+  "collectionName": "profile_assesments",
+  "info": {
+    "singularName": "profile-assesment",
+    "pluralName": "profile-assesments",
+    "displayName": "Profile Assesment"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "banner_section": {
+      "type": "component",
+      "component": "about-component.about-banner",
+      "repeatable": false
+    },
+    "enquiry_title": {
+      "type": "string",
+      "required": true
+    },
+    "enquiry_description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

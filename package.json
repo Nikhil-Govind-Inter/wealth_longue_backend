@@ -17,12 +17,17 @@
   "dependencies": {
     "@strapi/plugin-cloud": "5.48.1",
     "@strapi/plugin-users-permissions": "5.48.1",
+    "@strapi/provider-email-nodemailer": "^5.49.0",
     "@strapi/strapi": "5.48.1",
     "better-sqlite3": "12.8.0",
+    "nodemailer": "^9.0.1",
+    "pg": "^8.22.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
     "strapi-advanced-uuid": "^2.1.1",
+    "strapi-provider-email-brevo": "^1.0.4",
+    "strapi-provider-mailersend": "^1.0.1",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {

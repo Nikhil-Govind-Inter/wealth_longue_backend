@@ -20,6 +20,11 @@
       "type": "component",
       "component": "global.footer",
       "repeatable": false
+    },
+    "widgets": {
+      "type": "component",
+      "component": "global.widgets",
+      "repeatable": true
     }
   }
 }

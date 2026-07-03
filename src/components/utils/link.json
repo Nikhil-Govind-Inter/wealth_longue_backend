@@ -15,7 +15,8 @@
       "required": true
     },
     "is_external": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": false
     }
   },
   "config": {}

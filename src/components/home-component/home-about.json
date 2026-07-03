@@ -22,7 +22,7 @@
       "type": "component",
       "component": "utils.link",
       "repeatable": false,
-      "required": true
+      "required": false
     },
     "spec_items": {
       "type": "component",

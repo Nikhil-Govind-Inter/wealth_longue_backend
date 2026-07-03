@@ -1,3 +1,4 @@
+import { removeMetaFields } from "./../../../utils";
 /**
  * site-setting controller
  */
@@ -22,14 +23,15 @@ export default factories.createCoreController(
                   },
                 },
                 nav_links: true,
-                login_button: true,
               },
             },
-            footer: {
+            Footer: {
               populate: {
-                footer_logo: {
+                media: {
                   populate: {
-                    fields: ["url"],
+                    media_path: {
+                      fields: ["url"],
+                    },
                   },
                 },
                 navigations: {
@@ -41,9 +43,11 @@ export default factories.createCoreController(
                   populate: {
                     office_items: {
                       populate: {
-                        media_path: {
+                        media: {
                           populate: {
-                            fields: ["url"],
+                            media_path: {
+                              fields: ["url"],
+                            },
                           },
                         },
                       },
@@ -54,9 +58,11 @@ export default factories.createCoreController(
                   populate: {
                     items: {
                       populate: {
-                        media_path: {
+                        media: {
                           populate: {
-                            fields: ["url"],
+                            media_path: {
+                              fields: ["url"],
+                            },
                           },
                         },
                       },
@@ -65,15 +71,22 @@ export default factories.createCoreController(
                 },
               },
             },
+
+            widgets: {
+              populate: {
+                icon: {
+                  populate: {
+                    media_path: {
+                      fields: ["url"],
+                    },
+                  },
+                },
+              },
+            },
           },
         });
 
-      ctx.body = {
-        header: {
-          header: response.Header,
-          footer: response.footer,
-        },
-      };
+      ctx.body = removeMetaFields(response);
     },
   }),
 );

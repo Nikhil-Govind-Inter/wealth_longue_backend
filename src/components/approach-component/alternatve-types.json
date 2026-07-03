@@ -1,0 +1,55 @@
+{
+  "collectionName": "components_approach_component_alternatve_types",
+  "info": {
+    "displayName": "Alternatve Types",
+    "icon": "cup"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "media": {
+      "type": "component",
+      "component": "utils.s-ingle-media-without-t-ype",
+      "repeatable": true
+    },
+    "content": {
+      "type": "blocks"
+    },
+    "box_description": {
+      "type": "blocks",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "is_button"
+            },
+            false
+          ]
+        }
+      }
+    },
+    "is_button": {
+      "type": "boolean",
+      "required": true,
+      "default": false
+    },
+    "enquire_button": {
+      "type": "component",
+      "conditions": {
+        "visible": {
+          "==": [
+            {
+              "var": "is_button"
+            },
+            true
+          ]
+        }
+      },
+      "component": "utils.link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

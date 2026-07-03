@@ -31,10 +31,14 @@
       "component": "home-component.home-testimonials",
       "repeatable": false
     },
+    "form_section_title": {
+      "type": "string",
+      "required": true
+    },
     "news_and_blogs": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::news-and-blog.news-and-blog"
+      "type": "component",
+      "component": "home-component.news-section",
+      "repeatable": false
     }
   }
 }

@@ -1,5 +1,179 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface AboutComponentAboutBanner extends Struct.ComponentSchema {
+  collectionName: 'components_about_component_about_banners';
+  info: {
+    displayName: 'About Banner';
+    icon: 'calendar';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    media: Schema.Attribute.Component<'utils.media', false> &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutComponentAboutCOreSection extends Struct.ComponentSchema {
+  collectionName: 'components_about_component_about_c_ore_sections';
+  info: {
+    displayName: 'About Core Section';
+    icon: 'connector';
+  };
+  attributes: {
+    core_values: Schema.Attribute.Component<
+      'about-component.core-values',
+      true
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutComponentAboutTeamSection extends Struct.ComponentSchema {
+  collectionName: 'components_about_component_about_team_sections';
+  info: {
+    displayName: 'Teams';
+    icon: 'connector';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    designation: Schema.Attribute.String & Schema.Attribute.Required;
+    fb_url: Schema.Attribute.String;
+    linkedin_url: Schema.Attribute.String;
+    name: Schema.Attribute.String & Schema.Attribute.Required;
+    profile: Schema.Attribute.Component<
+      'utils.s-ingle-media-without-t-ype',
+      false
+    >;
+  };
+}
+
+export interface AboutComponentCoreValues extends Struct.ComponentSchema {
+  collectionName: 'components_about_component_core_values';
+  info: {
+    displayName: 'Core Values';
+    icon: 'attachment';
+  };
+  attributes: {
+    media: Schema.Attribute.Component<
+      'utils.s-ingle-media-without-t-ype',
+      false
+    > &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutComponentMissionVission extends Struct.ComponentSchema {
+  collectionName: 'components_about_component_mission_vissions';
+  info: {
+    displayName: 'Mission Vission';
+    icon: 'book';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface AboutComponentTeamSection extends Struct.ComponentSchema {
+  collectionName: 'components_about_component_team_sections';
+  info: {
+    displayName: 'Team Section';
+    icon: 'book';
+  };
+  attributes: {
+    teams: Schema.Attribute.Component<
+      'about-component.about-team-section',
+      true
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ApproachComponentAlternatveTypes
+  extends Struct.ComponentSchema {
+  collectionName: 'components_approach_component_alternatve_types';
+  info: {
+    displayName: 'Alternatve Types';
+    icon: 'cup';
+  };
+  attributes: {
+    box_description: Schema.Attribute.Blocks;
+    content: Schema.Attribute.Blocks;
+    enquire_button: Schema.Attribute.Component<'utils.link', false>;
+    is_button: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
+    media: Schema.Attribute.Component<
+      'utils.s-ingle-media-without-t-ype',
+      true
+    >;
+    title: Schema.Attribute.String;
+  };
+}
+
+export interface ApproachComponentApproachesWeProvide
+  extends Struct.ComponentSchema {
+  collectionName: 'components_approach_component_approaches_we_provides';
+  info: {
+    displayName: 'Approaches We Provide';
+    icon: 'brush';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    media: Schema.Attribute.Component<
+      'utils.s-ingle-media-without-t-ype',
+      false
+    > &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ContcatSectionContactInformationSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_contcat_section_contact_information_section_s';
+  info: {
+    displayName: 'Contact Information Section ';
+    icon: 'calendar';
+  };
+  attributes: {
+    contact_items: Schema.Attribute.Component<
+      'contcat-section.contact-items',
+      true
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ContcatSectionContactItems extends Struct.ComponentSchema {
+  collectionName: 'components_contcat_section_contact_items';
+  info: {
+    displayName: 'Contact Items';
+    icon: 'car';
+  };
+  attributes: {
+    address: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    phone: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface ContcatSectionFormSection extends Struct.ComponentSchema {
+  collectionName: 'components_contcat_section_form_sections';
+  info: {
+    displayName: 'Form Section';
+    icon: 'crown';
+  };
+  attributes: {
+    description: Schema.Attribute.Text & Schema.Attribute.Required;
+    form_title: Schema.Attribute.String & Schema.Attribute.Required;
+    map_link: Schema.Attribute.Text;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface GlobalFooter extends Struct.ComponentSchema {
   collectionName: 'components_global_footers';
   info: {
@@ -7,8 +181,9 @@ export interface GlobalFooter extends Struct.ComponentSchema {
     icon: 'crop';
   };
   attributes: {
-    address: Schema.Attribute.RichText;
-    description: Schema.Attribute.Blocks;
+    address: Schema.Attribute.RichText & Schema.Attribute.Required;
+    copyright: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
     media: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       false
@@ -18,7 +193,7 @@ export interface GlobalFooter extends Struct.ComponentSchema {
       'layout.office-locations',
       false
     >;
-    social_media: Schema.Attribute.Component<'layout.social-media', true>;
+    social_media: Schema.Attribute.Component<'layout.social-media', false>;
   };
 }
 
@@ -30,12 +205,29 @@ export interface GlobalHeader extends Struct.ComponentSchema {
   };
   attributes: {
     base_url: Schema.Attribute.String;
-    login_button: Schema.Attribute.Component<'utils.link', false>;
     media: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       false
     >;
     nav_links: Schema.Attribute.Component<'utils.link', true>;
+  };
+}
+
+export interface GlobalWidgets extends Struct.ComponentSchema {
+  collectionName: 'components_global_widgets';
+  info: {
+    displayName: 'widgets';
+    icon: 'dashboard';
+  };
+  attributes: {
+    icon: Schema.Attribute.Component<
+      'utils.s-ingle-media-without-t-ype',
+      false
+    >;
+    is_enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
+    link: Schema.Attribute.String;
+    title: Schema.Attribute.String;
   };
 }
 
@@ -46,8 +238,7 @@ export interface HomeComponentHomeAbout extends Struct.ComponentSchema {
     icon: 'chartBubble';
   };
   attributes: {
-    button: Schema.Attribute.Component<'utils.link', false> &
-      Schema.Attribute.Required;
+    button: Schema.Attribute.Component<'utils.link', false>;
     description: Schema.Attribute.RichText & Schema.Attribute.Required;
     media: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
@@ -105,11 +296,27 @@ export interface HomeComponentHomeTestimonials extends Struct.ComponentSchema {
     icon: 'cup';
   };
   attributes: {
-    testimonial_items: Schema.Attribute.Component<
-      'home-component.testimonial-items',
-      true
+    testimonial_items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::testimonial-item.testimonial-item'
     >;
-    tite: Schema.Attribute.String & Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
+export interface HomeComponentNewsSection extends Struct.ComponentSchema {
+  collectionName: 'components_home_component_news_sections';
+  info: {
+    displayName: 'News Section';
+    icon: 'calendar';
+  };
+  attributes: {
+    button: Schema.Attribute.Component<'utils.link', false>;
+    news_items: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::news-and-blog.news-and-blog'
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -179,6 +386,11 @@ export interface LayoutOfficeItems extends Struct.ComponentSchema {
   attributes: {
     is_external: Schema.Attribute.Boolean;
     link: Schema.Attribute.String;
+    media: Schema.Attribute.Component<
+      'utils.s-ingle-media-without-t-ype',
+      false
+    > &
+      Schema.Attribute.Required;
     title: Schema.Attribute.String;
   };
 }
@@ -202,11 +414,12 @@ export interface LayoutSocialItems extends Struct.ComponentSchema {
     icon: 'cursor';
   };
   attributes: {
-    label: Schema.Attribute.String;
     link: Schema.Attribute.String;
-    media_path: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    media: Schema.Attribute.Component<
+      'utils.s-ingle-media-without-t-ype',
+      false
+    > &
+      Schema.Attribute.Required;
   };
 }
 
@@ -217,8 +430,25 @@ export interface LayoutSocialMedia extends Struct.ComponentSchema {
     icon: 'twitter';
   };
   attributes: {
-    items: Schema.Attribute.Component<'layout.social-items', false>;
+    items: Schema.Attribute.Component<'layout.social-items', true>;
     title: Schema.Attribute.String;
+  };
+}
+
+export interface TestimonialComponentTestimonialSection
+  extends Struct.ComponentSchema {
+  collectionName: 'components_testimonial_component_testimonial_sections';
+  info: {
+    displayName: 'Testimonial Section';
+  };
+  attributes: {
+    description: Schema.Attribute.Blocks;
+    media_alt: Schema.Attribute.String;
+    media_path: Schema.Attribute.Media<
+      'images' | 'files' | 'videos' | 'audios',
+      true
+    >;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -229,7 +459,7 @@ export interface UtilsLink extends Struct.ComponentSchema {
     icon: 'link';
   };
   attributes: {
-    is_external: Schema.Attribute.Boolean;
+    is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     link: Schema.Attribute.String & Schema.Attribute.Required;
   };
@@ -242,13 +472,11 @@ export interface UtilsMedia extends Struct.ComponentSchema {
     icon: 'collapse';
   };
   attributes: {
-    desktop_media_path: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    desktop_media_path: Schema.Attribute.Media<'images' | 'videos'> &
+      Schema.Attribute.Required;
     media_alt: Schema.Attribute.String;
-    mobile_media_path: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios'
-    >;
+    mobile_media_path: Schema.Attribute.Media<'images' | 'videos'> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -289,7 +517,7 @@ export interface UtilsSIngleMediaWIthType extends Struct.ComponentSchema {
 export interface UtilsSIngleMediaWithoutTYpe extends Struct.ComponentSchema {
   collectionName: 'components_utils_s_ingle_media_without_t_ypes';
   info: {
-    displayName: 'SIngle Media Without tYPE';
+    displayName: 'SIngle Media Without Type';
     icon: 'briefcase';
   };
   attributes: {
@@ -301,12 +529,25 @@ export interface UtilsSIngleMediaWithoutTYpe extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'about-component.about-banner': AboutComponentAboutBanner;
+      'about-component.about-c-ore-section': AboutComponentAboutCOreSection;
+      'about-component.about-team-section': AboutComponentAboutTeamSection;
+      'about-component.core-values': AboutComponentCoreValues;
+      'about-component.mission-vission': AboutComponentMissionVission;
+      'about-component.team-section': AboutComponentTeamSection;
+      'approach-component.alternatve-types': ApproachComponentAlternatveTypes;
+      'approach-component.approaches-we-provide': ApproachComponentApproachesWeProvide;
+      'contcat-section.contact-information-section': ContcatSectionContactInformationSection;
+      'contcat-section.contact-items': ContcatSectionContactItems;
+      'contcat-section.form-section': ContcatSectionFormSection;
       'global.footer': GlobalFooter;
       'global.header': GlobalHeader;
+      'global.widgets': GlobalWidgets;
       'home-component.home-about': HomeComponentHomeAbout;
       'home-component.home-banner': HomeComponentHomeBanner;
       'home-component.home-service': HomeComponentHomeService;
       'home-component.home-testimonials': HomeComponentHomeTestimonials;
+      'home-component.news-section': HomeComponentNewsSection;
       'home-component.service-items': HomeComponentServiceItems;
       'home-component.specifications': HomeComponentSpecifications;
       'home-component.testimonial-items': HomeComponentTestimonialItems;
@@ -315,6 +556,7 @@ declare module '@strapi/strapi' {
       'layout.office-locations': LayoutOfficeLocations;
       'layout.social-items': LayoutSocialItems;
       'layout.social-media': LayoutSocialMedia;
+      'testimonial-component.testimonial-section': TestimonialComponentTestimonialSection;
       'utils.link': UtilsLink;
       'utils.media': UtilsMedia;
       'utils.media-with-type': UtilsMediaWithType;

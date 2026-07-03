@@ -6,14 +6,14 @@
   },
   "options": {},
   "attributes": {
-    "tite": {
+    "title": {
       "type": "string",
       "required": true
     },
     "testimonial_items": {
-      "type": "component",
-      "component": "home-component.testimonial-items",
-      "repeatable": true
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::testimonial-item.testimonial-item"
     }
   },
   "config": {}

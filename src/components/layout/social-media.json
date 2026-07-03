@@ -12,7 +12,7 @@
     "items": {
       "type": "component",
       "component": "layout.social-items",
-      "repeatable": false
+      "repeatable": true
     }
   },
   "config": {}

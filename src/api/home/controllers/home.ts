@@ -30,6 +30,7 @@ export default factories.createCoreController(
               },
             },
           },
+
           about_section: {
             populate: {
               media: {
@@ -40,10 +41,13 @@ export default factories.createCoreController(
                 },
               },
               spec_items: true,
+              button: true,
             },
           },
+
           service_section: {
             populate: {
+              button: true,
               service_items: {
                 populate: {
                   icons: {
@@ -57,6 +61,7 @@ export default factories.createCoreController(
               },
             },
           },
+
           testimonial_section: {
             populate: {
               testimonial_items: {
@@ -72,17 +77,22 @@ export default factories.createCoreController(
               },
             },
           },
+
           news_and_blogs: {
-            fields: ["title", "content", "published_on", "slug"],
             populate: {
-              media: {
+              button: true,
+              news_items: {
                 populate: {
-                  desktop_media_path: {
-                    fields: ["url"],
+                  media: {
+                    populate: {
+                      media_path: {
+                        fields: ["url"],
+                      },
+                    },
                   },
-                  mobile_media_path: {
-                    fields: ["url"],
-                  },
+                  category:{
+                    fields: ["name"]
+                  }
                 },
               },
             },
@@ -90,6 +100,7 @@ export default factories.createCoreController(
         },
       });
 
+      console.log("MESSAGE SEND SUCCESS!!!!!!")
       ctx.body = removeMetaFields(data);
     },
   }),

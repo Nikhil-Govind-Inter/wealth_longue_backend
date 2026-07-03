@@ -18,11 +18,6 @@
       "type": "component",
       "component": "utils.link",
       "repeatable": true
-    },
-    "login_button": {
-      "type": "component",
-      "component": "utils.link",
-      "repeatable": false
     }
   },
   "config": {}

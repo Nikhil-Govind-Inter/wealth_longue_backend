@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_about_component_about_c_ore_sections",
+  "info": {
+    "displayName": "About Core Section",
+    "icon": "connector"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "core_values": {
+      "type": "component",
+      "component": "about-component.core-values",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

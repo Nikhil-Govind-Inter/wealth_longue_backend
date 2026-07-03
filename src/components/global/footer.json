@@ -12,10 +12,12 @@
       "repeatable": false
     },
     "address": {
-      "type": "richtext"
+      "type": "richtext",
+      "required": true
     },
     "description": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     },
     "navigations": {
       "type": "component",
@@ -30,7 +32,11 @@
     "social_media": {
       "type": "component",
       "component": "layout.social-media",
-      "repeatable": true
+      "repeatable": false
+    },
+    "copyright": {
+      "type": "blocks",
+      "required": true
     }
   },
   "config": {}

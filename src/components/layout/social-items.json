@@ -6,21 +6,14 @@
   },
   "options": {},
   "attributes": {
-    "media_path": {
-      "type": "media",
-      "multiple": false,
-      "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
-      ]
-    },
-    "label": {
-      "type": "string"
-    },
     "link": {
       "type": "string"
+    },
+    "media": {
+      "type": "component",
+      "component": "utils.s-ingle-media-without-t-ype",
+      "repeatable": false,
+      "required": true
     }
   },
   "config": {}

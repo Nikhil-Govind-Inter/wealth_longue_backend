@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_about_component_about_banners",
+  "info": {
+    "displayName": "About Banner",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "media": {
+      "type": "component",
+      "component": "utils.media",
+      "repeatable": false,
+      "required": true
+    }
+  },
+  "config": {}
+}

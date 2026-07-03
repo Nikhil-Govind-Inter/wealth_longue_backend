@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_home_component_news_sections",
+  "info": {
+    "displayName": "News Section",
+    "icon": "calendar"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "button": {
+      "type": "component",
+      "component": "utils.link",
+      "repeatable": false
+    },
+    "news_items": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::news-and-blog.news-and-blog"
+    }
+  },
+  "config": {}
+}

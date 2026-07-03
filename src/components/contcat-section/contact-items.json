@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_contcat_section_contact_items",
+  "info": {
+    "displayName": "Contact Items",
+    "icon": "car"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "blocks",
+      "required": true
+    },
+    "phone": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}
