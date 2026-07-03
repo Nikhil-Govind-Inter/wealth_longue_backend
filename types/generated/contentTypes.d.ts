@@ -755,6 +755,38 @@ export interface ApiNewsAndBlogNewsAndBlog extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiPrivacyPolicyPrivacyPolicy extends Struct.SingleTypeSchema {
+  collectionName: 'privacy_policies';
+  info: {
+    displayName: 'Privacy Policy';
+    pluralName: 'privacy-policies';
+    singularName: 'privacy-policy';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    banner_section: Schema.Attribute.Component<
+      'about-component.about-banner',
+      false
+    >;
+    content: Schema.Attribute.Blocks;
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::privacy-policy.privacy-policy'
+    > &
+      Schema.Attribute.Private;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiProfileAssesmentEnquiryProfileAssesmentEnquiry
   extends Struct.CollectionTypeSchema {
   collectionName: 'profile_assesment_enquiries';
@@ -1520,6 +1552,7 @@ declare module '@strapi/strapi' {
       'api::enquiry.enquiry': ApiEnquiryEnquiry;
       'api::home.home': ApiHomeHome;
       'api::news-and-blog.news-and-blog': ApiNewsAndBlogNewsAndBlog;
+      'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::profile-assesment-enquiry.profile-assesment-enquiry': ApiProfileAssesmentEnquiryProfileAssesmentEnquiry;
       'api::profile-assesment.profile-assesment': ApiProfileAssesmentProfileAssesment;
       'api::publication-category.publication-category': ApiPublicationCategoryPublicationCategory;
