@@ -13,23 +13,38 @@
 //   },
 // });
 
-
 export default ({ env }) => ({
   email: {
     config: {
-      provider: 'nodemailer',
+      provider: "nodemailer",
       providerOptions: {
-        host: env('SMTP_HOST'),
-        port: env.int('SMTP_PORT'),
+        host: env("SMTP_HOST"),
+        port: env.int("SMTP_PORT"),
         secure: false,
         auth: {
-          user: env('SMTP_USERNAME'),
-          pass: env('SMTP_PASSWORD'),
+          user: env("SMTP_USERNAME"),
+          pass: env("SMTP_PASSWORD"),
         },
       },
       settings: {
-        defaultFrom: env('EMAIL_FROM'),
-        defaultReplyTo: env('EMAIL_REPLY_TO'),
+        defaultFrom: env("EMAIL_FROM"),
+        defaultReplyTo: env("EMAIL_REPLY_TO"),
+      },
+    },
+  },
+
+  upload: {
+    config: {
+      provider: "cloudinary",
+      providerOptions: {
+        cloud_name: env("CLOUDINARY_NAME"),
+        api_key: env("CLOUDINARY_KEY"),
+        api_secret: env("CLOUDINARY_SECRET"),
+      },
+      actionOptions: {
+        upload: {},
+        uploadStream: {},
+        delete: {},
       },
     },
   },
