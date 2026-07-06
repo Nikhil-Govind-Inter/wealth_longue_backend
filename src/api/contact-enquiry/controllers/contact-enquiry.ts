@@ -1,4 +1,4 @@
-`import { factories } from "@strapi/strapi";
+import { factories } from "@strapi/strapi";
 import { loadEmailTemplate } from "../../../utils/emailHelper";
 import * as nodemailer from "nodemailer";
 import { sendEmail } from "../../../utils/emailService";
