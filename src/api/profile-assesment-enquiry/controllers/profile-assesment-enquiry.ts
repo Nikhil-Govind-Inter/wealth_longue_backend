@@ -5,6 +5,7 @@
 import { factories } from "@strapi/strapi";
 import { loadEmailTemplate } from "../../../utils/emailHelper";
 import { sendEmail } from "../../../utils/emailService";
+import { verifyRecaptcha } from "../../../utils/recaptcha";
 
 export default factories.createCoreController(
   "api::profile-assesment-enquiry.profile-assesment-enquiry",
@@ -34,17 +35,45 @@ export default factories.createCoreController(
         communication,
         mostConvenient,
         additionalDetails,
+        captchaToken,
       } = formData;
+
+      if (!captchaToken) {
+        return ctx.badRequest("Captcha token is missing.");
+      }
+
+      const verified = await verifyRecaptcha(captchaToken);
+      if (!verified) {
+        return ctx.badRequest("Captcha verification failed.");
+      }
+
+      // Remove captchaToken so we don't save it to the DB schema
+      const { captchaToken: _, ...dbData } = formData;
+
+      // find email from db
+      const existingEmail = await strapi
+        .documents("api::profile-assesment-enquiry.profile-assesment-enquiry")
+        .findFirst({
+          filters: { email },
+        });
+
+      if (existingEmail) {
+        return ctx.badRequest(
+          "You have already submitted an enquiry with this email.",
+        );
+      }
 
       // ✅ FIX: wrap DB write in try/catch
       let response;
       try {
         response = await strapi
           .documents("api::profile-assesment-enquiry.profile-assesment-enquiry")
-          .create({ data: formData });
+          .create({ data: dbData });
       } catch (dbError) {
         strapi.log.error("❌ Failed to save enquiry:", dbError);
-        return ctx.internalServerError("Failed to save your enquiry. Please try again.");
+        return ctx.internalServerError(
+          "Failed to save your enquiry. Please try again.",
+        );
       }
 
       // ✅ FIX: use actual form fields, not name/message
@@ -76,11 +105,17 @@ export default factories.createCoreController(
         });
 
         console.log(`✅ Email sent to: ${email}`);
-        ctx.body = { message: "Enquiry submitted successfully", data: response };
+        ctx.body = {
+          message: "Enquiry submitted successfully",
+          data: response,
+        };
       } catch (emailError) {
         console.error("❌ Email sending failed:", emailError);
         // Still return success since the enquiry WAS saved — email is secondary
-        ctx.body = { message: "Enquiry saved but email failed", data: response };
+        ctx.body = {
+          message: "Enquiry saved but email failed",
+          data: response,
+        };
       }
     },
   }),

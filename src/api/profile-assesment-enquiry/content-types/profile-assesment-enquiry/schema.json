@@ -18,7 +18,9 @@
       "type": "string"
     },
     "email": {
-      "type": "email"
+      "type": "email",
+      "required": true,
+      "unique": true
     },
     "age": {
       "type": "integer"

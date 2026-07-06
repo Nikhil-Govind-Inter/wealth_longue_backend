@@ -1,7 +1,7 @@
 import { factories } from "@strapi/strapi";
 import { removeMetaFields } from "../../../utils";
 
-const PAGE_SIZE = 9;
+const PAGE_SIZE = 12;
 const RECENT_NEWS_LIMIT = 5;
 
 export default factories.createCoreController(
