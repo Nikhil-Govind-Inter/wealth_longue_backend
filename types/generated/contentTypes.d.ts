@@ -714,6 +714,38 @@ export interface ApiHomeHome extends Struct.SingleTypeSchema {
   };
 }
 
+export interface ApiMetaDatasMetaDatas extends Struct.CollectionTypeSchema {
+  collectionName: 'meta_data';
+  info: {
+    displayName: 'Meta Data';
+    pluralName: 'meta-data';
+    singularName: 'meta-datas';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    locale: Schema.Attribute.String & Schema.Attribute.Private;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::meta-datas.meta-datas'
+    > &
+      Schema.Attribute.Private;
+    meta_description: Schema.Attribute.Text;
+    meta_keywords: Schema.Attribute.Text;
+    meta_title: Schema.Attribute.Text;
+    page: Schema.Attribute.String;
+    page_slug: Schema.Attribute.UID<'page'>;
+    publishedAt: Schema.Attribute.DateTime;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiNewsAndBlogNewsAndBlog extends Struct.CollectionTypeSchema {
   collectionName: 'news_and_blogs';
   info: {
@@ -1557,6 +1589,7 @@ declare module '@strapi/strapi' {
       'api::contact.contact': ApiContactContact;
       'api::enquiry.enquiry': ApiEnquiryEnquiry;
       'api::home.home': ApiHomeHome;
+      'api::meta-datas.meta-datas': ApiMetaDatasMetaDatas;
       'api::news-and-blog.news-and-blog': ApiNewsAndBlogNewsAndBlog;
       'api::privacy-policy.privacy-policy': ApiPrivacyPolicyPrivacyPolicy;
       'api::profile-assesment-enquiry.profile-assesment-enquiry': ApiProfileAssesmentEnquiryProfileAssesmentEnquiry;
