@@ -31,7 +31,8 @@
             false
           ]
         }
-      }
+      },
+      "required": true
     },
     "is_button": {
       "type": "boolean",
@@ -51,7 +52,8 @@
         }
       },
       "component": "utils.link",
-      "repeatable": false
+      "repeatable": false,
+      "required": true
     }
   },
   "config": {}

@@ -17,7 +17,8 @@
       "repeatable": false
     },
     "content": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     }
   }
 }

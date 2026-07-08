@@ -13,7 +13,8 @@
     "contact_items": {
       "type": "component",
       "component": "contcat-section.contact-items",
-      "repeatable": true
+      "repeatable": true,
+      "required": true
     }
   },
   "config": {}

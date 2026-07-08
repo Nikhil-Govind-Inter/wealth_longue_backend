@@ -12,7 +12,8 @@
       "type": "string"
     },
     "is_external": {
-      "type": "boolean"
+      "type": "boolean",
+      "default": true
     },
     "media": {
       "type": "component",

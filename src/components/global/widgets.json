@@ -18,7 +18,8 @@
       "default": true
     },
     "link": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "icon": {
       "type": "component",

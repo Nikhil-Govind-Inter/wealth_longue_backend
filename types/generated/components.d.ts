@@ -100,9 +100,10 @@ export interface ApproachComponentAlternatveTypes
     icon: 'cup';
   };
   attributes: {
-    box_description: Schema.Attribute.Blocks;
+    box_description: Schema.Attribute.Blocks & Schema.Attribute.Required;
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
-    enquire_button: Schema.Attribute.Component<'utils.link', false>;
+    enquire_button: Schema.Attribute.Component<'utils.link', false> &
+      Schema.Attribute.Required;
     is_button: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
       Schema.Attribute.DefaultTo<false>;
@@ -144,7 +145,8 @@ export interface ContcatSectionContactInformationSection
     contact_items: Schema.Attribute.Component<
       'contcat-section.contact-items',
       true
-    >;
+    > &
+      Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -231,7 +233,7 @@ export interface GlobalWidgets extends Struct.ComponentSchema {
       Schema.Attribute.Required;
     is_enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
-    link: Schema.Attribute.String;
+    link: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String;
   };
 }
@@ -390,7 +392,7 @@ export interface LayoutOfficeItems extends Struct.ComponentSchema {
     displayName: 'Office Items';
   };
   attributes: {
-    is_external: Schema.Attribute.Boolean;
+    is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     link: Schema.Attribute.String;
     media: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
