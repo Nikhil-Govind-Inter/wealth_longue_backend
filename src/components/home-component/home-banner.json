@@ -24,7 +24,7 @@
       "type": "component",
       "component": "utils.link",
       "repeatable": false,
-      "required": true
+      "required": false
     }
   },
   "config": {}

@@ -7,15 +7,18 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "media": {
       "type": "component",
       "component": "utils.s-ingle-media-without-t-ype",
-      "repeatable": true
+      "repeatable": true,
+      "required": true
     },
     "content": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     },
     "box_description": {
       "type": "blocks",

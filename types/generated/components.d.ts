@@ -44,7 +44,8 @@ export interface AboutComponentAboutTeamSection extends Struct.ComponentSchema {
     profile: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
   };
 }
 
@@ -100,7 +101,7 @@ export interface ApproachComponentAlternatveTypes
   };
   attributes: {
     box_description: Schema.Attribute.Blocks;
-    content: Schema.Attribute.Blocks;
+    content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     enquire_button: Schema.Attribute.Component<'utils.link', false>;
     is_button: Schema.Attribute.Boolean &
       Schema.Attribute.Required &
@@ -108,8 +109,9 @@ export interface ApproachComponentAlternatveTypes
     media: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       true
-    >;
-    title: Schema.Attribute.String;
+    > &
+      Schema.Attribute.Required;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -169,7 +171,7 @@ export interface ContcatSectionFormSection extends Struct.ComponentSchema {
   attributes: {
     description: Schema.Attribute.Text & Schema.Attribute.Required;
     form_title: Schema.Attribute.String & Schema.Attribute.Required;
-    map_link: Schema.Attribute.Text;
+    map_link: Schema.Attribute.Text & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -187,7 +189,8 @@ export interface GlobalFooter extends Struct.ComponentSchema {
     media: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
     navigations: Schema.Attribute.Component<'layout.footer-navigations', true>;
     office_location: Schema.Attribute.Component<
       'layout.office-locations',
@@ -204,11 +207,12 @@ export interface GlobalHeader extends Struct.ComponentSchema {
     icon: 'bulletList';
   };
   attributes: {
-    base_url: Schema.Attribute.String;
+    base_url: Schema.Attribute.String & Schema.Attribute.Required;
     media: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
     nav_links: Schema.Attribute.Component<'utils.link', true>;
   };
 }
@@ -223,7 +227,8 @@ export interface GlobalWidgets extends Struct.ComponentSchema {
     icon: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
     is_enabled: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<true>;
     link: Schema.Attribute.String;
@@ -262,8 +267,7 @@ export interface HomeComponentHomeBanner extends Struct.ComponentSchema {
     icon: 'brush';
   };
   attributes: {
-    button: Schema.Attribute.Component<'utils.link', false> &
-      Schema.Attribute.Required;
+    button: Schema.Attribute.Component<'utils.link', false>;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
     media: Schema.Attribute.Component<'utils.media-with-type', false> &
       Schema.Attribute.Required;
@@ -330,7 +334,8 @@ export interface HomeComponentServiceItems extends Struct.ComponentSchema {
     icons: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
     link: Schema.Attribute.String & Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
@@ -373,8 +378,9 @@ export interface LayoutFooterNavigations extends Struct.ComponentSchema {
     icon: 'cursor';
   };
   attributes: {
-    nav_title: Schema.Attribute.String;
-    navigation_links: Schema.Attribute.Component<'utils.link', true>;
+    nav_title: Schema.Attribute.String & Schema.Attribute.Required;
+    navigation_links: Schema.Attribute.Component<'utils.link', true> &
+      Schema.Attribute.Required;
   };
 }
 
@@ -403,7 +409,7 @@ export interface LayoutOfficeLocations extends Struct.ComponentSchema {
   };
   attributes: {
     office_items: Schema.Attribute.Component<'layout.office-items', true>;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -431,7 +437,7 @@ export interface LayoutSocialMedia extends Struct.ComponentSchema {
   };
   attributes: {
     items: Schema.Attribute.Component<'layout.social-items', true>;
-    title: Schema.Attribute.String;
+    title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
 
@@ -442,12 +448,10 @@ export interface TestimonialComponentTestimonialSection
     displayName: 'Testimonial Section';
   };
   attributes: {
-    description: Schema.Attribute.Blocks;
-    media_alt: Schema.Attribute.String;
-    media_path: Schema.Attribute.Media<
-      'images' | 'files' | 'videos' | 'audios',
-      true
-    >;
+    description: Schema.Attribute.Blocks & Schema.Attribute.Required;
+    media_alt: Schema.Attribute.String & Schema.Attribute.Required;
+    media_path: Schema.Attribute.Media<'images', true> &
+      Schema.Attribute.Required;
     title: Schema.Attribute.String & Schema.Attribute.Required;
   };
 }
@@ -459,7 +463,9 @@ export interface UtilsLink extends Struct.ComponentSchema {
     icon: 'link';
   };
   attributes: {
-    is_external: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
+    is_external: Schema.Attribute.Boolean &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<false>;
     label: Schema.Attribute.String & Schema.Attribute.Required;
     link: Schema.Attribute.String & Schema.Attribute.Required;
   };
@@ -474,7 +480,7 @@ export interface UtilsMedia extends Struct.ComponentSchema {
   attributes: {
     desktop_media_path: Schema.Attribute.Media<'images' | 'videos'> &
       Schema.Attribute.Required;
-    media_alt: Schema.Attribute.String;
+    media_alt: Schema.Attribute.String & Schema.Attribute.Required;
     mobile_media_path: Schema.Attribute.Media<'images' | 'videos'> &
       Schema.Attribute.Required;
   };

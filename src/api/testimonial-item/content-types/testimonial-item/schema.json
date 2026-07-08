@@ -26,7 +26,8 @@
     "media": {
       "type": "component",
       "component": "utils.s-ingle-media-without-t-ype",
-      "repeatable": false
+      "repeatable": false,
+      "required": true
     }
   }
 }

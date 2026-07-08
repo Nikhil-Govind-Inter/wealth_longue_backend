@@ -12,18 +12,18 @@
     "media_path": {
       "type": "media",
       "multiple": true,
+      "required": true,
       "allowedTypes": [
-        "images",
-        "files",
-        "videos",
-        "audios"
+        "images"
       ]
     },
     "media_alt": {
-      "type": "string"
+      "type": "string",
+      "required": true
     },
     "description": {
-      "type": "blocks"
+      "type": "blocks",
+      "required": true
     }
   },
   "config": {}

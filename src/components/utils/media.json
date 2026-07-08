@@ -25,7 +25,8 @@
       ]
     },
     "media_alt": {
-      "type": "string"
+      "type": "string",
+      "required": true
     }
   },
   "config": {}

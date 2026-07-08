@@ -1022,7 +1022,8 @@ export interface ApiTestimonialItemTestimonialItem
     media: Schema.Attribute.Component<
       'utils.s-ingle-media-without-t-ype',
       false
-    >;
+    > &
+      Schema.Attribute.Required;
     name: Schema.Attribute.String & Schema.Attribute.Required;
     publishedAt: Schema.Attribute.DateTime;
     quotes: Schema.Attribute.RichText & Schema.Attribute.Required;
