@@ -3,15 +3,14 @@
  */
 
 import { factories } from "@strapi/strapi";
-import { loadEmailTemplate } from "../../../utils/emailHelper";
-import { sendEmail } from "../../../utils/emailService";
+import { loadEmailTemplate, safeSend } from "../../../utils/emailHelper";
 import { verifyRecaptcha } from "../../../utils/recaptcha";
+import { getAdminEmail } from "../../../utils/siteSettings";
 
 export default factories.createCoreController(
   "api::profile-assesment-enquiry.profile-assesment-enquiry",
   ({ strapi }) => ({
     async create(ctx) {
-      // ✅ FIX: read from ctx.request.body, NOT ctx.body
       const formData = ctx.request.body?.data;
 
       if (!formData || !formData.email) {
@@ -47,28 +46,22 @@ export default factories.createCoreController(
         return ctx.badRequest("Captcha verification failed.");
       }
 
-      // Remove captchaToken so we don't save it to the DB schema
       const { captchaToken: _, ...dbData } = formData;
 
-      // find email from db
-      const existingEmail = await strapi
-        .documents("api::profile-assesment-enquiry.profile-assesment-enquiry")
-        .findFirst({
-          filters: { email },
-        });
+      const documents = strapi.documents(
+        "api::profile-assesment-enquiry.profile-assesment-enquiry",
+      );
 
+      const existingEmail = await documents.findFirst({ filters: { email } });
       if (existingEmail) {
         return ctx.badRequest(
           "You have already submitted an enquiry with this email.",
         );
       }
 
-      // ✅ FIX: wrap DB write in try/catch
       let response;
       try {
-        response = await strapi
-          .documents("api::profile-assesment-enquiry.profile-assesment-enquiry")
-          .create({ data: dbData });
+        response = await documents.create({ data: dbData });
       } catch (dbError) {
         strapi.log.error("❌ Failed to save enquiry:", dbError);
         return ctx.internalServerError(
@@ -76,8 +69,7 @@ export default factories.createCoreController(
         );
       }
 
-      // ✅ FIX: use actual form fields, not name/message
-      const html = loadEmailTemplate("profile-assessment-enquiry.html", {
+      const emailData = {
         NAME: fullName,
         EMAIL: email,
         PHONE: phone || "Not provided",
@@ -95,28 +87,41 @@ export default factories.createCoreController(
         MOST_CONVENIENT: mostConvenient || "Not provided",
         ADDITIONAL_DETAILS: additionalDetails || "None",
         DATE: new Date().toLocaleDateString("en-IN", { dateStyle: "long" }),
+      };
+
+      const userHtml = loadEmailTemplate("profile-assessment-enquiry.html", emailData);
+      const userEmailResponse = await safeSend({
+        to: email,
+        subject: "Thanks for contacting Wealth Lounge!",
+        html: userHtml,
       });
 
+      let adminEmailResponse = null;
       try {
-        await sendEmail({
-          to: email,
-          subject: "Thanks for contacting Wealth Lounge!",
-          html,
-        });
-
-        console.log(`✅ Email sent to: ${email}`);
-        ctx.body = {
-          message: "Enquiry submitted successfully",
-          data: response,
-        };
-      } catch (emailError) {
-        console.error("❌ Email sending failed:", emailError);
-        // Still return success since the enquiry WAS saved — email is secondary
-        ctx.body = {
-          message: "Enquiry saved but email failed",
-          data: response,
-        };
+        const adminEmail = await getAdminEmail(strapi);
+        if (adminEmail) {
+          const adminHtml = loadEmailTemplate(
+            "profile-assessment-enquiry.html",
+            emailData,
+          );
+          adminEmailResponse = await safeSend({
+            to: adminEmail,
+            subject: "New Profile Assessment Enquiry Received",
+            html: adminHtml,
+          });
+        }
+      } catch (err) {
+        console.error("❌ Admin email lookup/send failed:", err);
       }
+
+      ctx.body = {
+        message: "Enquiry submitted successfully",
+        data: response,
+        email: {
+          user: !!userEmailResponse,
+          admin: !!adminEmailResponse,
+        },
+      };
     },
   }),
 );

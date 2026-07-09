@@ -25,6 +25,9 @@
       "type": "component",
       "component": "global.widgets",
       "repeatable": true
+    },
+    "admin_email": {
+      "type": "email"
     }
   }
 }

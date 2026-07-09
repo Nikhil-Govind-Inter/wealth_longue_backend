@@ -1,5 +1,6 @@
 import * as fs from "fs";
 import * as path from "path";
+import { sendEmail } from "./emailService";
 
 /**
  * Loads an HTML template from src/emailTemplates/
@@ -7,17 +8,22 @@ import * as path from "path";
  */
 export function loadEmailTemplate(
   templateName: string,
-  replacements: Record<string, string>
+  replacements: Record<string, string>,
 ): string {
   let templatePath = path.join(
-    __dirname,       // src/utils/
-    "..",            // src/
+    __dirname, // src/utils/
+    "..", // src/
     "emailTemplates",
-    templateName
+    templateName,
   );
 
   if (!fs.existsSync(templatePath)) {
-    const fallbackPath = path.join(process.cwd(), "src", "emailTemplates", templateName);
+    const fallbackPath = path.join(
+      process.cwd(),
+      "src",
+      "emailTemplates",
+      templateName,
+    );
     if (fs.existsSync(fallbackPath)) {
       templatePath = fallbackPath;
     }
@@ -35,3 +41,16 @@ export function loadEmailTemplate(
 
   return html;
 }
+
+export const safeSend = async (options: {
+  to: string;
+  subject: string;
+  html: string;
+}) => {
+  try {
+    return await sendEmail(options);
+  } catch (err) {
+    console.error(`❌ Email sending failed to ${options.to}:`, err);
+    return null;
+  }
+};

@@ -978,6 +978,7 @@ export interface ApiSiteSettingSiteSetting extends Struct.SingleTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    admin_email: Schema.Attribute.Email;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;

@@ -1,8 +1,7 @@
 import { factories } from "@strapi/strapi";
-import { loadEmailTemplate } from "../../../utils/emailHelper";
-import * as nodemailer from "nodemailer";
-import { sendEmail } from "../../../utils/emailService";
+import { loadEmailTemplate, safeSend } from "../../../utils/emailHelper";
 import { verifyRecaptcha } from "../../../utils/recaptcha";
+import { getAdminEmail } from "../../../utils/siteSettings";
 
 export default factories.createCoreController(
   "api::contact-enquiry.contact-enquiry",
@@ -19,52 +18,53 @@ export default factories.createCoreController(
         return ctx.badRequest("Captcha verification failed.");
       }
 
-      // find email from db
-      const existingEmail = await strapi
-        .documents("api::contact-enquiry.contact-enquiry")
-        .findFirst({
-          filters: { email },
-        });
-
+      const documents = strapi.documents("api::contact-enquiry.contact-enquiry");
+      const existingEmail = await documents.findFirst({ filters: { email } });
       if (existingEmail) {
         return ctx.badRequest("You have already submitted an enquiry with this email.");
       }
 
-      const response = await strapi
-        .documents("api::contact-enquiry.contact-enquiry")
-        .create({
-          data: { name, email, phone, message },
-        });
+      const response = await documents.create({ data: { name, email, phone, message } });
 
-      console.log("email from frontend : ", email);
-
-      const html = loadEmailTemplate("contact-enquiry.html", {
+      const emailData = {
         NAME: name,
         EMAIL: email,
         PHONE: phone || "Not provided",
         MESSAGE: message,
         DATE: new Date().toLocaleDateString("en-IN", { dateStyle: "long" }),
+      };
+
+
+      const userHtml = loadEmailTemplate("contact-enquiry.html", emailData);
+      const userEmailResponse = await safeSend({
+        to: email,
+        subject: "Thanks for contacting Wealth Lounge!",
+        html: userHtml,
       });
 
+      let adminEmailResponse = null;
       try {
-        await sendEmail({
-          to: email,
-          subject: "Thanks for contacting Wealth Lounge!",
-          html,
-        });
-
-        console.log(`✅ Email sent to: ${email}`);
-        ctx.body = {
-          message: "Enquiry submitted successfully",
-          data: response,
-        };
-      } catch (emailError) {
-        console.error("❌ Email sending failed:", emailError);
-        ctx.body = {
-          message: "Enquiry saved but email failed",
-          data: response,
-        };
+        const adminEmail = await getAdminEmail(strapi);
+        if (adminEmail) {
+          const adminHtml = loadEmailTemplate("contact-admin-enquiry.html", emailData);
+          adminEmailResponse = await safeSend({
+            to: adminEmail,
+            subject: "New Contact Enquiry Received",
+            html: adminHtml,
+          });
+        }
+      } catch (err) {
+        console.error("❌ Admin email lookup/send failed:", err);
       }
+
+      ctx.body = {
+        message: "Enquiry submitted successfully",
+        data: response,
+        email: {
+          user: !!userEmailResponse,
+          admin: !!adminEmailResponse,
+        },
+      };
     },
   }),
 );
