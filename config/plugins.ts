@@ -16,19 +16,13 @@
 export default ({ env }) => ({
   email: {
     config: {
-      provider: "nodemailer",
+      provider: "strapi-provider-email-brevo",
       providerOptions: {
-        host: env("SMTP_HOST"),
-        port: env.int("SMTP_PORT"),
-        secure: false,
-        auth: {
-          user: env("SMTP_USERNAME"),
-          pass: env("SMTP_PASSWORD"),
-        },
+        apiKey: env("BREVO_API_KEY"),
       },
       settings: {
-        defaultFrom: env("EMAIL_FROM"),
-        defaultReplyTo: env("EMAIL_REPLY_TO"),
+        defaultFrom: env("BREVO_DEFAULT_FROM"),
+        defaultReplyTo: env("BREVO_DEFAULT_REPLY_TO"),
       },
     },
   },

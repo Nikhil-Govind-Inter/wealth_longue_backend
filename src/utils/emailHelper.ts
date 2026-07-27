@@ -49,6 +49,7 @@ export const safeSend = async (options: {
 }) => {
   try {
     return await sendEmail(options);
+    
   } catch (err) {
     console.error(`❌ Email sending failed to ${options.to}:`, err);
     return null;
