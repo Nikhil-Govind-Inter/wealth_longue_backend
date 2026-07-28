@@ -12,7 +12,7 @@ export default factories.createCoreController(
 
   ({ strapi }) => ({
     async create(ctx) {
-      const { name, email, phone, message, captchaToken } =
+      const { full_name, email, phone, message, captchaToken } =
         ctx.request.body ?? {};
 
       if (!captchaToken) return ctx.badRequest("Captcha missing");
@@ -29,11 +29,11 @@ export default factories.createCoreController(
         );
 
       const created = await documents.create({
-        data: { name, email, phone, message },
+        data: { full_name, email, phone, message },
       });
 
       const emailData = {
-        NAME: name,
+        NAME: full_name,
         EMAIL: email,
         PHONE: phone || "Not provided",
         MESSAGE: message,

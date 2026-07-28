@@ -757,11 +757,14 @@ export interface ApiNewsAndBlogNewsAndBlog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
+    banner_section: Schema.Attribute.Component<
+      'about-component.about-banner',
+      false
+    >;
     category: Schema.Attribute.Relation<
       'oneToOne',
       'api::publication-category.publication-category'
-    > &
-      Schema.Attribute.Required;
+    >;
     content: Schema.Attribute.Blocks & Schema.Attribute.Required;
     createdAt: Schema.Attribute.DateTime;
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &

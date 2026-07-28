@@ -11,6 +11,11 @@
   },
   "pluginOptions": {},
   "attributes": {
+    "banner_section": {
+      "type": "component",
+      "component": "about-component.about-banner",
+      "repeatable": false
+    },
     "title": {
       "type": "string",
       "required": true
@@ -30,7 +35,6 @@
     "category": {
       "type": "relation",
       "relation": "oneToOne",
-      "required": true,
       "target": "api::publication-category.publication-category"
     },
     "meta_title": {

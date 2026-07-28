@@ -480,10 +480,10 @@ export interface UtilsMedia extends Struct.ComponentSchema {
     icon: 'collapse';
   };
   attributes: {
-    desktop_media_path: Schema.Attribute.Media<'images' | 'videos'> &
+    desktop_media_path: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required;
     media_alt: Schema.Attribute.String & Schema.Attribute.Required;
-    mobile_media_path: Schema.Attribute.Media<'images' | 'videos'> &
+    mobile_media_path: Schema.Attribute.Media<'images'> &
       Schema.Attribute.Required;
   };
 }
