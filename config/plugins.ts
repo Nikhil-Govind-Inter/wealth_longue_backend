@@ -42,4 +42,16 @@ export default ({ env }) => ({
       },
     },
   },
+
+
+    'csv-export': {
+    enabled: true,
+    config: {
+      maxExportCount: 1000,
+      defaultFields: ['id', 'createdAt', 'updatedAt'],
+      delimiter: ',',
+      encoding: 'utf8',
+    },
+  },
+
 });
