@@ -1,0 +1,11 @@
+{
+  "name": "export-to-excel",
+  "version": "0.0.0",
+  "private": true,
+  "main": "strapi-server.js",
+  "strapi": {
+    "kind": "plugin",
+    "name": "export-to-excel",
+    "displayName": "Export to Excel"
+  }
+}

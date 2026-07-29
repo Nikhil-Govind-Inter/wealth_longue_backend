@@ -45,13 +45,18 @@ export default ({ env }) => ({
 
 
     'csv-export': {
-    enabled: true,
+    enabled: false,
     config: {
       maxExportCount: 1000,
       defaultFields: ['id', 'createdAt', 'updatedAt'],
       delimiter: ',',
       encoding: 'utf8',
     },
+  },
+
+  'export-to-excel': {
+    enabled: true,
+    resolve: './src/plugins/export-to-excel',
   },
 
 });

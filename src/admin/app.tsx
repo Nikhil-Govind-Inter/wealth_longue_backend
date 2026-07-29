@@ -1,8 +1,15 @@
 import type { StrapiApp } from '@strapi/strapi/admin';
+import ExportToExcelButton from './components/ExportToExcelButton';
 
 export default {
   config: {
     locales: [],
+  },
+  register(app: StrapiApp) {
+    app.getPlugin('content-manager').injectComponent('listView', 'actions', {
+      name: 'export-to-excel-button',
+      Component: ExportToExcelButton,
+    });
   },
   bootstrap(app: StrapiApp) {
     if (typeof window === 'undefined') return;
