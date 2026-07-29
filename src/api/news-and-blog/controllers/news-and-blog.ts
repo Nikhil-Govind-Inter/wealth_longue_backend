@@ -62,6 +62,20 @@ export default factories.createCoreController(
         .find({
           filters: { slug: { $eq: slug } },
           populate: {
+            banner_section: {
+              populate: {
+                media: {
+                  populate: {
+                    desktop_media_path: {
+                      fields: ["url"],
+                    },
+                    mobile_media_path: {
+                      fields: ["url"],
+                    },
+                  },
+                },
+              },
+            },
             category: { fields: ["name", "slug"] },
             media: {
               populate: {

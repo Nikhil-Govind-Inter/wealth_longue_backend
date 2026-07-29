@@ -757,10 +757,7 @@ export interface ApiNewsAndBlogNewsAndBlog extends Struct.CollectionTypeSchema {
     draftAndPublish: true;
   };
   attributes: {
-    banner_section: Schema.Attribute.Component<
-      'about-component.about-banner',
-      false
-    >;
+    banner_section: Schema.Attribute.Component<'news.news-banner', false>;
     category: Schema.Attribute.Relation<
       'oneToOne',
       'api::publication-category.publication-category'

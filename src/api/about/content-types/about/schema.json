@@ -11,11 +11,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "about_banner": {
-      "type": "component",
-      "component": "about-component.about-banner",
-      "repeatable": false
-    },
     "about_section": {
       "type": "component",
       "component": "home-component.home-about",
@@ -39,6 +34,11 @@
     "advisory_board_section": {
       "type": "component",
       "component": "about-component.team-section",
+      "repeatable": false
+    },
+    "about_banner": {
+      "type": "component",
+      "component": "about-component.about-banner",
       "repeatable": false
     }
   }

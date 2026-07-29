@@ -443,6 +443,18 @@ export interface LayoutSocialMedia extends Struct.ComponentSchema {
   };
 }
 
+export interface NewsNewsBanner extends Struct.ComponentSchema {
+  collectionName: 'components_news_news_banners';
+  info: {
+    displayName: 'News Banner';
+    icon: 'bold';
+  };
+  attributes: {
+    media: Schema.Attribute.Component<'utils.media', false>;
+    title: Schema.Attribute.String;
+  };
+}
+
 export interface TestimonialComponentTestimonialSection
   extends Struct.ComponentSchema {
   collectionName: 'components_testimonial_component_testimonial_sections';
@@ -564,6 +576,7 @@ declare module '@strapi/strapi' {
       'layout.office-locations': LayoutOfficeLocations;
       'layout.social-items': LayoutSocialItems;
       'layout.social-media': LayoutSocialMedia;
+      'news.news-banner': NewsNewsBanner;
       'testimonial-component.testimonial-section': TestimonialComponentTestimonialSection;
       'utils.link': UtilsLink;
       'utils.media': UtilsMedia;

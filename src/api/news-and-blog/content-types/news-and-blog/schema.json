@@ -13,7 +13,7 @@
   "attributes": {
     "banner_section": {
       "type": "component",
-      "component": "about-component.about-banner",
+      "component": "news.news-banner",
       "repeatable": false
     },
     "title": {

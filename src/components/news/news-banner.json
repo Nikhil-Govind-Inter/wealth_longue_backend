@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_news_news_banners",
+  "info": {
+    "displayName": "News Banner",
+    "icon": "bold"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "media": {
+      "type": "component",
+      "component": "utils.media",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}
