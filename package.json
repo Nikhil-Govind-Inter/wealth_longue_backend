@@ -32,7 +32,6 @@
     "strapi-advanced-uuid": "^2.1.1",
     "strapi-provider-email-brevo": "^1.0.4",
     "strapi-provider-mailersend": "^1.0.1",
-    "strapi5-plugin-csv-export": "^5.0.1",
     "styled-components": "^6.0.0"
   },
   "devDependencies": {
