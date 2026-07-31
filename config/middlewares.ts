@@ -35,6 +35,7 @@ const config: Core.Config.Middlewares = [
   "strapi::body",
   "strapi::session",
   "strapi::favicon",
+  "global::admin-refresh-fix",
   "strapi::public",
   // "global::recaptcha",
 ];
